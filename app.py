@@ -60,6 +60,7 @@ from bs4 import BeautifulSoup
 import requests
 import os
 import json
+import uvicorn
 from pydantic import BaseModel
 from typing import Optional
 from fastapi import FastAPI
@@ -96,4 +97,6 @@ async def get_products(product_name: str, min_price: Optional[float] = None, min
     return product_data
 
 
+if __name__ == "__main__":
+    uvicorn.run("app:app", host="127.0.0.1", port=5000, log_level="info")
 # http://127.0.0.1:8000/products/?product_name=earpods&min_price=1000&min_rating=4.0
